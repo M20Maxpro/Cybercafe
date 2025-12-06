@@ -1,0 +1,1006 @@
+
+/* color e interfaz.txt (CSS Corregido) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    /* CAMBIO: Texto principal a Negro Carbón */
+    color: #1B1B1B; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.navbar {
+    /* CAMBIO: Fondo del Nav a Gris Grafito */
+    background: #2C2F33; 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    /* CAMBIO: Hover del Nav a Verde Eléctrico */
+    color: #00C896;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Nav Actions */
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Hero Section */
+.hero {
+    /* CAMBIO: Fondo Hero a Gris Claro */
+    background: #C4A26C; 
+    color: #1B1B1B; /* Ajuste el texto para que contraste con Gris Claro */
+    padding: 150px 0 100px;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-primary {
+    /* CAMBIO: Botón Primario a Madera Natural Clara */
+    background: #D6B37A; 
+    /* CAMBIO: Texto del botón a Negro Carbón para contraste */
+    color: #1B1B1B; 
+}
+
+.btn-primary:hover {
+    /* CAMBIO: Hover de Botón Primario (un poco más oscuro) */
+    background: #C4A26C; 
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    /* CAMBIO: Borde y texto a Negro Carbón para contraste en hero */
+    color: #1B1B1B; 
+    /* CAMBIO: Borde a Negro Carbón */
+    border: 2px solid #1B1B1B; 
+}
+
+.btn-secondary:hover {
+    /* CAMBIO: Hover de Secundario a Gris Grafito */
+    background: #2C2F33; 
+    color: white;
+}
+
+/* Sections */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    /* CAMBIO: Título de Sección a Gris Grafito */
+    color: #2C2F33; 
+}
+
+.section-subtitle {
+    text-align: center;
+    /* CAMBIO: Subtítulo de Sección a Negro Carbón (más oscuro que #666) */
+    color: #1B1B1B; 
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.bg-light {
+    /* CAMBIO: Fondo Claro a Beige Cálido */
+    background: #F5EBD0; 
+}
+
+/* Services */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card i {
+    font-size: 3rem;
+    /* CAMBIO: Iconos de Servicios a Verde Eléctrico */
+    color: #00C896; 
+    margin-bottom: 1rem;
+}
+
+/* Reservas */
+.reserva-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.computadoras-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.computadora-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    /* CAMBIO: Borde de tarjeta de computadora a Verde Eléctrico */
+    border-left: 4px solid #00C896; 
+    transition: transform 0.3s;
+}
+
+.computadora-card:hover {
+    transform: translateY(-2px);
+}
+
+.computadora-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.computadora-marca {
+    font-weight: bold;
+    /* CAMBIO: Marca de computadora a Gris Grafito */
+    color: #2C2F33; 
+}
+
+.computadora-precio {
+    /* CAMBIO: Precio de computadora a Madera Natural Clara */
+    color: #D6B37A; 
+    font-weight: bold;
+}
+
+.computadora-modelo {
+    /* CAMBIO: Modelo de computadora a Negro Carbón */
+    color: #1B1B1B; 
+    font-size: 0.9rem;
+}
+
+.disponible {
+    color: #00C896; /* Verde Eléctrico para "Disponible" */
+    font-weight: bold;
+}
+
+.no-disponible {
+    /* CAMBIO: No Disponible a Madera Natural Clara */
+    color: #D6B37A; 
+    font-weight: bold;
+}
+
+/* Forms */
+.reserva-form, .taxi-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    /* CAMBIO: Etiqueta de formulario a Gris Grafito */
+    color: #2C2F33; 
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    /* CAMBIO: Borde de enfoque a Verde Eléctrico */
+    border-color: #00C896; 
+}
+
+/* Promociones */
+.promociones-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.promocion-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    /* CAMBIO: Borde de promoción a Madera Natural Clara */
+    border-left: 4px solid #D6B37A; 
+}
+
+.promocion-titulo {
+    /* CAMBIO: Título de promoción a Gris Grafito */
+    color: #2C2F33; 
+    margin-bottom: 1rem;
+}
+
+.promocion-descripcion {
+    /* CAMBIO: Descripción de promoción a Negro Carbón */
+    color: #1B1B1B; 
+    margin-bottom: 1rem;
+}
+
+.promocion-vigencia {
+    /* CAMBIO: Vigencia de promoción a Madera Natural Clara */
+    color: #D6B37A; 
+    font-weight: bold;
+}
+
+/* Contacto */
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.contacto-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contacto-item i {
+    /* CAMBIO: Iconos de Contacto a Verde Eléctrico */
+    color: #00C896; 
+    margin-top: 0.2rem;
+}
+
+.redes-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.red-social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.red-social:hover {
+    transform: translateX(5px);
+}
+
+.facebook { background: #3b5998; } /* Mantenido */
+.instagram { background: #e4405f; } /* Mantenido */
+.whatsapp { background: #25d366; } /* Mantenido */
+
+/* Taxi */
+.taxi-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.taxi-beneficios {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.taxi-beneficios li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.taxi-beneficios i {
+    color: #00C896; /* Verde Eléctrico para iconos de chequeo */
+}
+
+/* Footer */
+.footer {
+    /* CAMBIO: Fondo de Footer a Gris Grafito */
+    background: #2C2F33; 
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    /* CAMBIO: Borde superior de Footer a un Gris un poco más claro */
+    border-top: 1px solid #4D535A; 
+}
+
+/* ========== ESTILOS CAFETERÍA ========== */
+.cafeteria-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.menu-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.categorias-menu {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.categoria-btn {
+    padding: 0.5rem 1.5rem;
+    /* CAMBIO: Borde de botón de categoría a Verde Eléctrico */
+    border: 2px solid #00C896; 
+    background: white;
+    /* CAMBIO: Color de texto de botón de categoría a Verde Eléctrico */
+    color: #00C896; 
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.categoria-btn.active,
+.categoria-btn:hover {
+    /* CAMBIO: Fondo activo/hover a Verde Eléctrico */
+    background: #00C896; 
+    color: white;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.producto-card {
+    /* CAMBIO: Fondo de tarjeta de producto a Beige Cálido (claro) */
+    background: #F5EBD0; 
+    padding: 1.5rem;
+    border-radius: 10px;
+    /* CAMBIO: Borde de tarjeta de producto a Madera Natural Clara */
+    border-left: 4px solid #D6B37A; 
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.producto-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.producto-nombre {
+    font-weight: bold;
+    /* CAMBIO: Nombre de producto a Gris Grafito */
+    color: #2C2F33; 
+    margin: 0;
+}
+
+.producto-precio {
+    /* CAMBIO: Precio de producto a Madera Natural Clara */
+    color: #D6B37A; 
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.producto-categoria {
+    /* CAMBIO: Fondo de categoría a Verde Eléctrico */
+    background: #00C896; 
+    color: white;
+    padding: 0.2rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+.producto-descripcion {
+    /* CAMBIO: Descripción de producto a Negro Carbón */
+    color: #1B1B1B; 
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}
+
+.btn-agregar {
+    width: 100%;
+    padding: 0.5rem;
+    background: #00C896; /* Verde Eléctrico para botón de agregar */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 0.5rem;
+}
+
+.btn-agregar:hover {
+    background: #00A87A; /* Un poco más oscuro */
+}
+
+/* Carrito */
+.carrito-container {
+    position: sticky;
+    top: 100px;
+}
+
+.carrito {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.carrito h3 {
+    /* CAMBIO: Título del carrito a Gris Grafito */
+    color: #2C2F33; 
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.carrito-items {
+    min-height: 100px;
+    margin-bottom: 1rem;
+}
+
+.carrito-vacio {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+}
+
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item-info {
+    flex-grow: 1;
+}
+
+.item-nombre {
+    font-weight: bold;
+    /* CAMBIO: Nombre del ítem a Gris Grafito */
+    color: #2C2F33; 
+}
+
+.item-precio {
+    /* CAMBIO: Precio del ítem a Madera Natural Clara */
+    color: #D6B37A; 
+    font-weight: bold;
+}
+
+.item-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-cantidad {
+    /* CAMBIO: Botón de cantidad a Verde Eléctrico */
+    background: #00C896; 
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-eliminar {
+    /* CAMBIO: Botón de eliminar a Madera Natural Clara */
+    background: #D6B37A; 
+    color: white;
+    border: none;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.carrito-total {
+    /* CAMBIO: Fondo a un tono claro de Verde Eléctrico */
+    background: #EAF9F5; 
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    margin: 1rem 0;
+    /* CAMBIO: Borde a Verde Eléctrico */
+    border-left: 3px solid #00C896; 
+}
+
+#agregar-reserva:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* ========== MODAL DE LOGIN ========== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ========== PANEL DE ADMINISTRACIÓN ========== */
+.admin-panel {
+    /* CAMBIO: Fondo de panel a Beige Cálido */
+    background: #F5EBD0; 
+    min-height: 100vh;
+    padding: 100px 20px 20px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* CAMBIO: Borde de tarjeta de estadística a Verde Eléctrico */
+    border-left: 4px solid #00C896; 
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    /* CAMBIO: Número de estadística a Gris Grafito */
+    color: #2C2F33; 
+    margin: 0.5rem 0 0;
+}
+
+.admin-tabs {
+    display: flex;
+    background: white;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.tab-button {
+    padding: 1rem 2rem;
+    border: none;
+    /* CAMBIO: Fondo de pestaña inactiva a Beige Cálido */
+    background: #F5EBD0; 
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.tab-button.active {
+    /* CAMBIO: Fondo de pestaña activa a Verde Eléctrico */
+    background: #00C896; 
+    color: white;
+}
+
+.tab-button:hover:not(.active) {
+    /* CAMBIO: Hover de pestaña inactiva a Gris Claro */
+    background: #87C7EB; 
+}
+
+.tab-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Tablas */
+.table-container {
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    /* CAMBIO: Fondo de encabezado de tabla a Beige Cálido */
+    background-color: #F5EBD0; 
+    font-weight: bold;
+    /* CAMBIO: Texto de encabezado a Gris Grafito */
+    color: #2C2F33; 
+}
+
+tr:hover {
+    /* CAMBIO: Hover de fila a un color blanco grisáceo */
+    background-color: #f5f5f5; 
+}
+
+/* Estados */
+.estado.completada {
+    color: #00C896; /* Verde Eléctrico para completada */
+    font-weight: bold;
+}
+
+.estado.pendiente {
+    color: #D6B37A; /* Madera Natural Clara para pendiente (naranja/marrón) */
+    font-weight: bold;
+}
+
+.estado.cancelada {
+    color: #D6B37A; /* Madera Natural Clara para cancelada (en lugar de rojo) */
+    font-weight: bold;
+}
+
+/* Botones de acción */
+.btn-action {
+    padding: 5px 10px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btn-edit {
+    /* CAMBIO: Botón de editar a Verde Eléctrico */
+    background: #00C896; 
+    color: white;
+}
+
+.btn-delete {
+    /* CAMBIO: Botón de eliminar a Madera Natural Clara */
+    background: #D6B37A; 
+    color: white;
+}
+
+/* Categorías de productos */
+.categoria-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.categoria-badge.bebidas {
+    /* CAMBIO: Bebidas a Verde Eléctrico */
+    background: #00C896; 
+    color: white;
+}
+
+.categoria-badge.comida {
+    /* CAMBIO: Comida a Madera Natural Clara */
+    background: #D6B37A; 
+    color: white;
+}
+
+.categoria-badge.snacks {
+    /* CAMBIO: Snacks a Gris Claro (como tercer color) */
+    background: #87C7EB; 
+    color: #1B1B1B; /* Texto oscuro para que contraste con el fondo claro */
+}
+
+/* Productos en reservas */
+.reserva-productos {
+    font-size: 0.8rem;
+    /* CAMBIO: Texto secundario a Negro Carbón */
+    color: #1B1B1B; 
+    margin-top: 0.5rem;
+}
+
+.producto-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.2rem 0;
+    padding: 0.2rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.producto-item:last-child {
+    border-bottom: none;
+}
+
+/* Precios en tiempo real */
+.precio-info, .total-info {
+    /* CAMBIO: Fondo de información de precio a un tono claro de Gris Claro */
+    background: #F0F7FB; 
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    /* CAMBIO: Borde a Verde Eléctrico */
+    border-left: 3px solid #00C896; 
+}
+
+.precio-info strong, .total-info strong {
+    /* CAMBIO: Texto fuerte a Gris Grafito */
+    color: #2C2F33; 
+}
+
+#precio-valor, #total-valor {
+    /* CAMBIO: Valores a Madera Natural Clara */
+    color: #D6B37A; 
+    font-weight: bold;
+}
+
+.total-info {
+    /* CAMBIO: Fondo de información total a un tono claro de Verde Eléctrico */
+    background: #EAF9F5; 
+    /* CAMBIO: Borde de información total a Verde Eléctrico */
+    border-left-color: #00C896; 
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        /* CAMBIO: Fondo de menú móvil a Gris Grafito */
+        background: #2C2F33; 
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .reserva-container,
+    .contacto-grid,
+    .taxi-container,
+    .cafeteria-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .admin-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .admin-tabs {
+        flex-direction: column;
+    }
+    
+    .tab-button {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .table-container {
+        font-size: 0.8rem;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+    }
+    
+    .nav-actions {
+        margin-left: auto;
+        margin-right: 1rem;
+    }
+    
+    .categorias-menu {
+        justify-content: center;
+    }
+    
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Logo con imagen */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    border-radius: 4px;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+}

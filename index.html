@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Hub Coffee - Centro de Computación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#inicio" class="logo-link">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Nexus Hub Coffee Logo" class="logo-img">
+    <span class="logo-text">Nexus Hub Coffee</span>
+</a>
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#reservas" class="nav-link">Reservas</a></li>
+                    <li><a href="#promociones" class="nav-link">Promociones</a></li>
+                    <li><a href="#cafeteria" class="nav-link">Cafetería</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="#taxi" class="nav-link">Taxi</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button id="login-btn" class="btn btn-secondary">Iniciar Sesión</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Modal de Login -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="form-login">
+                <div class="form-group">
+                    <label for="tipo-usuario">Tipo de Usuario:</label>
+                    <select id="tipo-usuario" name="tipo_usuario" required>
+                        <option value="">Selecciona tipo</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                </div>
+            </form>
+            <p id="login-message"></p>
+        </div>
+    </div>
+
+    <!-- Panel de Administración ACTUALIZADO -->
+    <div id="admin-panel" class="admin-panel" style="display: none;">
+        <div class="admin-header">
+            <h2>Panel de Administración</h2>
+            <button id="logout-btn" class="btn btn-secondary">Cerrar Sesión</button>
+        </div>
+        
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3>Ventas Totales</h3>
+                <p class="stat-number" id="total-ventas">S/. 0.00</p>
+            </div>
+            <div class="stat-card">
+                <h3>Ventas Computación</h3>
+                <p class="stat-number" id="ventas-computadoras">S/. 0.00</p>
+            </div>
+            <div class="stat-card">
+                <h3>Ventas Cafetería</h3>
+                <p class="stat-number" id="ventas-productos">S/. 0.00</p>
+            </div>
+            <div class="stat-card">
+                <h3>Reservas del Mes</h3>
+                <p class="stat-number" id="reservas-mes">0</p>
+            </div>
+        </div>
+        
+        <div class="admin-tabs">
+            <button class="tab-button active" data-tab="reservas">Reservas</button>
+            <button class="tab-button" data-tab="computadoras">Computadoras</button>
+            <button class="tab-button" data-tab="productos">Cafetería</button>
+            <button class="tab-button" data-tab="clientes">Clientes</button>
+        </div>
+        
+        <div class="tab-content">
+            <div id="reservas-tab" class="tab-pane active">
+                <h3>Historial de Reservas</h3>
+                <div class="table-container">
+                    <table id="tabla-reservas">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Computadora</th>
+                                <th>Horas</th>
+                                <th>Total</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservas-body">
+                            <!-- Las reservas se cargan aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="computadoras-tab" class="tab-pane">
+                <h3>Gestión de Computadoras</h3>
+                <button id="agregar-pc" class="btn btn-primary">Agregar Computadora</button>
+                <div class="table-container">
+                    <table id="tabla-computadoras">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Precio/Hora</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="computadoras-body">
+                            <!-- Las computadoras se cargan aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="productos-tab" class="tab-pane">
+                <h3>Gestión de Cafetería</h3>
+                <button id="agregar-producto" class="btn btn-primary">Agregar Producto</button>
+                <div class="table-container">
+                    <table id="tabla-productos">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Descripción</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productos-body">
+                            <!-- Los productos se cargan aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="clientes-tab" class="tab-pane">
+                <h3>Registro de Clientes</h3>
+                <div class="table-container">
+                    <table id="tabla-clientes">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                <th>Reservas</th>
+                                <th>Total Gastado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientes-body">
+                            <!-- Los clientes se cargan aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>El mejor centro de Cibercafe en Villa Salvador</h2>
+            <p>Equipos de última generación • Internet de alta velocidad • Cafetería • Ambiente climatizado</p>
+            <div class="hero-buttons">
+                <a href="#reservas" class="btn btn-primary">Reservar Ahora</a>
+                <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Computadoras Gamer</h3>
+                    <p>Equipos de alta gama para gaming y diseño</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Cafetería</h3>
+                    <p>Bebidas, snacks y comida rápida</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-print"></i>
+                    <h3>Impresión y Escaneo</h3>
+                    <p>Impresión a color y blanco/negro</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Internet Rápido</h3>
+                    <p>Fibra óptica 200 Mbps</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-taxi"></i>
+                    <h3>Servicio de Taxi</h3>
+                    <p>Recogida a domicilio en Villa Salvador</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Reservas -->
+    <section id="reservas" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Reserva tu Computadora</h2>
+            <div class="reserva-container">
+                <div class="computadoras-grid" id="computadoras-list">
+                    <!-- Las computadoras se cargan aquí con JavaScript -->
+                </div>
+                
+                <div class="reserva-form">
+                    <h3>Formulario de Reserva</h3>
+                    <form id="form-reserva">
+                        <div class="form-group">
+                            <label for="computadora">Computadora:</label>
+                            <select id="computadora" name="computadora" required>
+                                <option value="">Selecciona una computadora</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="horas">Horas:</label>
+                            <input type="number" id="horas" name="horas" min="1" max="8" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha">Fecha y Hora:</label>
+                            <input type="datetime-local" id="fecha" name="fecha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo:</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Reservar Ahora</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Promociones -->
+    <section id="promociones" class="section">
+        <div class="container">
+            <h2 class="section-title">Promociones y Eventos</h2>
+            <div class="promociones-grid" id="promociones-list">
+                <!-- Las promociones se cargan aquí con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Cafetería -->
+    <section id="cafeteria" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Nuestra Cafetería</h2>
+            <p class="section-subtitle">Disfruta de bebidas y snacks mientras usas nuestras computadoras</p>
+            
+            <div class="cafeteria-container">
+                <div class="menu-container">
+                    <h3>Menú</h3>
+                    <div class="categorias-menu">
+                        <button class="categoria-btn active" data-categoria="todos">Todos</button>
+                        <button class="categoria-btn" data-categoria="bebidas">Bebidas</button>
+                        <button class="categoria-btn" data-categoria="comida">Comida</button>
+                        <button class="categoria-btn" data-categoria="snacks">Snacks</button>
+                    </div>
+                    
+                    <div class="menu-grid" id="menu-list">
+                        <!-- Los productos se cargan con JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="carrito-container">
+                    <div class="carrito">
+                        <h3>🛒 Tu Pedido</h3>
+                        <div id="carrito-items" class="carrito-items">
+                            <p class="carrito-vacio">El carrito está vacío</p>
+                        </div>
+                        <div class="carrito-total">
+                            <strong>Total: S/. <span id="total-carrito">0.00</span></strong>
+                        </div>
+                        <button id="agregar-reserva" class="btn btn-primary" disabled>
+                            Agregar a Reserva
+                        </button>
+                        <button id="limpiar-carrito" class="btn btn-secondary">
+                            Limpiar Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2 class="section-title">Contacto y Horarios</h2>
+            <div class="contacto-grid">
+                <div class="contacto-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contacto-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Dirección:</strong>
+                            <p>Av. Los Héroes 123, Villa Salvador, Lima</p>
+                        </div>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Teléfono:</strong>
+                            <p>+51 901 702 527</p>
+                        </div>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email:</strong>
+                            <p>CompuyCafe@cyberspace.com</p>
+                        </div>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Horarios:</strong>
+                            <p>Lunes a Domingo: 8:00 AM - 11:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="redes-sociales">
+                    <h3>Síguenos en Redes Sociales</h3>
+                    <div class="redes-grid">
+                        <a href="#" class="red-social facebook">
+                            <i class="fab fa-facebook"></i>
+                            Facebook
+                        </a>
+                        <a href="#" class="red-social instagram">
+                            <i class="fab fa-instagram"></i>
+                            Instagram
+                        </a>
+                        <a href="#" class="red-social whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Taxi -->
+    <section id="taxi" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Servicio de Taxi</h2>
+            <div class="taxi-container">
+                <div class="taxi-info">
+                    <h3>Taxi a domicilio en Villa Salvador</h3>
+                    <p>Servicio seguro y confiable las 24 horas</p>
+                    <ul class="taxi-beneficios">
+                        <li><i class="fas fa-check"></i> Vehículos en buen estado</li>
+                        <li><i class="fas fa-check"></i> Conductores verificados</li>
+                        <li><i class="fas fa-check"></i> Precios económicos</li>
+                        <li><i class="fas fa-check"></i> Servicio rápido</li>
+                    </ul>
+                </div>
+                
+                <div class="taxi-form">
+                    <h3>Solicitar Taxi</h3>
+                    <form id="form-taxi">
+                        <div class="form-group">
+                            <label for="direccion">Dirección de recogida:</label>
+                            <input type="text" id="direccion" name="direccion" required placeholder="Ej: Av. Los Héroes 123">
+                        </div>
+                        <div class="form-group">
+                            <label for="referencia">Referencia:</label>
+                            <input type="text" id="referencia" name="referencia" required placeholder="Ej: Frente al parque">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono-taxi">Teléfono de contacto:</label>
+                            <input type="tel" id="telefono-taxi" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Solicitar Taxi</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CyberSpace</h3>
+                    <p>El mejor centro de computación y cafetería en Villa Salvador, Lima, Perú.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📞 +51 901 702 527</p>
+                    <p>📧 CompuyCafe@cyberspace.com</p>
+                    <p>📍 Av. Los Héroes 123, Villa Salvador</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horarios</h3>
+                    <p>Lunes a Domingo</p>
+                    <p>8:00 AM - 11:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CyberSpace. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
